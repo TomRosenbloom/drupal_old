@@ -1,0 +1,19 @@
+name = Seven Child
+description = Child of Seven, created just to tweak admin menu (font size) after installing admin menu module. Doesn't work though so fuck it off for now
+base theme = seven
+;package = Core
+;version = VERSION
+core = 7.x
+
+
+stylesheets[all][] = css/seven_child.css
+
+settings[shortcut_module_link] = 1
+regions[content] = Content
+regions[help] = Help
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom
+regions[sidebar_first] = First sidebar
+regions_hidden[] = sidebar_first
+
+
