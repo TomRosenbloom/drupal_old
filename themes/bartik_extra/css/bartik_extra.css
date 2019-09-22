@@ -8,9 +8,6 @@ and open the template in the editor.
     Author     : Tom
 */
 
-<<<<<<< HEAD
-.region-newregion { clear: both }
-=======
 
 /* 
 created newregion to house the main navigation because...? 
@@ -64,5 +61,8 @@ and/or reinstate the heading but smaller and positioned where I want it?
 
 is it worth it? */
 
-
->>>>>>> 147b9b1924e1cdf118df1cd84385172775f33faa
+/* layout of listed event */
+.views-field-field-training-image div { display: inline; float: left; }
+.views-field-field-location { float:left; margin-left: 10px; }
+.views-field-field-training-level-entity-ref { float: right; margin-left: 10px; }
+.views-field-field-training-level-entity-ref h2 { margin-top: 0; }
