@@ -34,6 +34,31 @@ There is a nice_menus.css file but that's buried in /sites/all/modules/nice_menu
 	color: white; 
 }
 
+
+/* make the bottom 'displaying x - y of z' message behave sensibly */
+.view-footer { clear: left; }
+
+/* layout of individual listed events */
+.views-field-title h2 {
+	margin-top: 0;
+}
+.views-field-field-training-image div { 
+	display: inline; 
+	float: left; 
+}
+.views-field-field-location { 
+	float:left;
+	margin-left: 10px;
+}
+.views-field-field-training-level-entity-ref { 
+	float: right; 
+	margin-left: 10px;
+}
+.views-field-field-training-level-entity-ref h2 { 
+	margin-top: 0; 
+}
+
+
 /* 
 a quick fix to get rid of headings on Training Level images (my attemts to use a 'taxonomy image' - a common problem in Drupal it seems)
 Longer term, need to find out how to apply styling via UI (will require putting these images in a Drupal Block I think)
@@ -49,11 +74,18 @@ Longer term, need to find out how to apply styling via UI (will require putting 
 	margin-right: 6px;
 }
 .taxonomy-term.vocabulary-training-level .content { clear: both; float: left; }
-.views-row { clear: both; }
+.views-row { 
+	clear: both;
+	background-color: aliceblue;
+	overflow: auto;
+	margin-bottom: 20px;
+	padding: 10px;
+}
 
 /* this makes the images appear inline */
 .views-field-field-training-level-entity-ref { display: block; }
 .views-field-field-training-level-entity-ref div { display: inline; }
+.views-field-field-training-level-entity-ref h2 { display: none; }
 
 /* 
 ...so now how do I create a hover message (showing level) - will need js for that I think
@@ -61,8 +93,3 @@ and/or reinstate the heading but smaller and positioned where I want it?
 
 is it worth it? */
 
-/* layout of listed event */
-.views-field-field-training-image div { display: inline; float: left; }
-.views-field-field-location { float:left; margin-left: 10px; }
-.views-field-field-training-level-entity-ref { float: right; margin-left: 10px; }
-.views-field-field-training-level-entity-ref h2 { margin-top: 0; }

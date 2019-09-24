@@ -73,7 +73,7 @@ if (!defined('CIVICRM_UF')) {
  *      define( 'CIVICRM_UF_DSN', 'mysql://cms_db_username:cms_db_password@db_server/cms_database?new_link=true');
  */
 if (!defined('CIVICRM_UF_DSN') && CIVICRM_UF !== 'UnitTests') {
-  define( 'CIVICRM_UF_DSN'           , 'mysql://contacts2:REOsecnejPatDa9@localhost/drupal7?new_link=true');
+  define( 'CIVICRM_UF_DSN'           , 'mysql://root:@localhost/drupal7?new_link=true');
 }
 
 // 
@@ -106,7 +106,7 @@ if (!defined('CIVICRM_DSN')) {
     define('CIVICRM_DSN', $GLOBALS['_CV']['TEST_DB_DSN']);
   }
   else {
-    define('CIVICRM_DSN', 'mysql://contacts2:REOsecnejPatDa9@localhost:3306/drupal7?new_link=true');
+    define('CIVICRM_DSN', 'mysql://root:@localhost:3306/drupal7?new_link=true');
   }
 }
 
@@ -178,10 +178,25 @@ if (!defined('CIVICRM_LOGGING_DSN')) {
 
 global $civicrm_root;
 
-$civicrm_root = 'C:/xampp/htdocs/drupal7/modules/civicrm';
+$civicrm_root = 'C:/xampp/htdocs/drupal7/sites/all/modules/civicrm';
 if (!defined('CIVICRM_TEMPLATE_COMPILEDIR')) {
   define( 'CIVICRM_TEMPLATE_COMPILEDIR', 'C:/xampp/htdocs/drupal7\\sites\\default\\files\\civicrm\\templates_c\\');
 }
+
+/**
+ * SMARTY Compile Check:
+ *
+ * This tells Smarty whether to check for recompiling or not. Recompiling
+ * does not need to happen unless a template or config file is changed.
+ * Typically you enable this during development, and disable for production.
+ *
+ * Related issue:
+ * https://lab.civicrm.org/dev/core/issues/1073
+ *
+ */
+//if (!defined('CIVICRM_TEMPLATE_COMPILE_CHECK')) {
+//  define( 'CIVICRM_TEMPLATE_COMPILE_CHECK', FALSE);
+//}
 
 /**
  * Site URLs:
@@ -282,7 +297,7 @@ if (!defined('CIVICRM_UF_BASEURL')) {
  * More info at http://wiki.civicrm.org/confluence/display/CRMDOC/Command-line+Script+Configuration
  */
 if (!defined('CIVICRM_SITE_KEY')) {
-  define( 'CIVICRM_SITE_KEY', 'b83fd8514179cca8797722bd54a62be7');
+  define( 'CIVICRM_SITE_KEY', '4c53f9da46e950c018f4cb7e657b0cde');
 }
 
 /**
