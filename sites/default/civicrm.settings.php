@@ -106,7 +106,7 @@ if (!defined('CIVICRM_DSN')) {
     define('CIVICRM_DSN', $GLOBALS['_CV']['TEST_DB_DSN']);
   }
   else {
-    define('CIVICRM_DSN', 'mysql://root:@localhost:3306/drupal7?new_link=true');
+    define('CIVICRM_DSN', 'mysql://admin:NTcZ9lXYY13k0UI1@localhost:3306/civicrm?new_link=true');
   }
 }
 
@@ -297,7 +297,7 @@ if (!defined('CIVICRM_UF_BASEURL')) {
  * More info at http://wiki.civicrm.org/confluence/display/CRMDOC/Command-line+Script+Configuration
  */
 if (!defined('CIVICRM_SITE_KEY')) {
-  define( 'CIVICRM_SITE_KEY', '4c53f9da46e950c018f4cb7e657b0cde');
+  define( 'CIVICRM_SITE_KEY', '9bd5d0de67b553a1c12b30f2377d0b30');
 }
 
 /**
