@@ -106,7 +106,7 @@ if (!defined('CIVICRM_DSN')) {
     define('CIVICRM_DSN', $GLOBALS['_CV']['TEST_DB_DSN']);
   }
   else {
-    define('CIVICRM_DSN', 'mysql://admin:NTcZ9lXYY13k0UI1@localhost:3306/civicrm?new_link=true');
+    define('CIVICRM_DSN', 'mysql://admin:foobarbaz@localhost:3306/civicrm?new_link=true');
   }
 }
 

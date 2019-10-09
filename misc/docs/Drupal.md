@@ -3,7 +3,7 @@
 ## A plan...
 
 1. In my local installation, replicate the Voscur Calendar view and Upcoming Events block (is it a block?) and install the Bootstrap Business theme
-3. get Civi components running on local installation - nb in the Voscur installation there are (1) components installed and integrated with Drupal (right?) (2) components installed and *not* integrated with Drupal (CiviEvent, CiviMember, and more) (3) components not installed (actually, no - none that we will need in the foreseeable)
+3. get Civi components running on local installation - nb in the Voscur installation there are (1) components installed and integrated with Drupal (right? CiviCase would be an example I think, because there is a Drupal form for internal staff use - which has been the source of problems though but) (2) components installed and *not* integrated with Drupal (CiviEvent, CiviMember, and more) (3) components not installed (actually, no - none that we will need in the foreseeable)
 3. find out about Voscur SSL certificate - what type (EV presumably), from who, how much...
 4. [investigate using Civi with Worpress]
 
