@@ -50,6 +50,24 @@ You also get a block in Drupal, CiviCRM Upcoming Events (Disabled)
 
 Yep. Following the instructions in the above link I have achieved Civi/Drupal integration and can now create a View that pulls data from Civi.
 
+### Event categories
+
+Ok so that went pretty well - there's three different ways to display events from Civi in the outward facing (Drupal) site - the HTML listing from Civi, the Civi upcoming events block, or (best) integrating Civi and Drupal and using a view. But, for all of these I can't yet replicate what I have in Drupal, i.e. training events that can be filtered on category. In the Drupal-only version I've got filters on two categories - category (the VCSE Academy category) and level. Note that in civi the out-of-the-box event category is already being used to specify Voscur training. So, I will need to (1) create two custom categories in Civi (2) hope that I can use these in my Drupal view.
+
+**Note** re categorisation (Drupal taxonomy) in Voscur - need to properly revisit this but remember the other day David was talking about the categorisation of events in the current site being based on a sort of global categorisation of Voscur stuff that they wanted to implement. I was reminded of this in the process of adding custom data for categorising events, because after you specify that your custom data is for events, the next question is which events it should apply to (because I've defined two event types - Voscur Training and 'other'). Basically, whilst I understand the thinking behind the Voscur global categories, I think it was misapplied.
+
+It seems like custom data is implemented in a v sensible and thorough way - new tables are created, including link tables for many to many (or maybe they just do that regardless).
+
+
+
+This is all going pretty well. 
+
+Snagging:
+
+- conditional display of address elements i.e. so that if some are not present we don't have unwanted spaces/commas. There are modules for this but none seem particularly well used, so try this: https://www.drupal.org/docs/7/howtos/build-a-simple-conditional-field-in-views-7x-3x
+
+
+
 
 
 ## A note about managing database changes
