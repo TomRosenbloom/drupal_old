@@ -34,6 +34,28 @@ Following on from previous work in Drupal, it's interesting when looking at this
 
 NB these blocks are all 'CiviCRM... something'. I guess they came when I installed the Drupal Civi module
 
+### Listing events in external site
+
+In Civi, from Manage Events, you can click on the HTML listing icon to get a page listing forthcoming events, with this url http://localhost/drupal7/civicrm/event/ical?reset=1&list=1&html=1
+
+You also get a block in Drupal, CiviCRM Upcoming Events (Disabled)
+
+**Experiment 1** - create a page in Drupal and use the CiviCRM Upcoming Events block. First create a Basic Page; then get rid of some extraneous blocks from the left sidebar (in Bartik Extra) - this is easiest done from the page itself using gear icon->configure block. Note that the url of this new page is /content/events-civi, so question: why the 'content'? I don't get this in my previous Training page - presumably because I created that from a View. I can change the URL easily enough (I think) but this is typically confusing stuff from Drupal. If I'm going to change it best to do it sooner rather than later because I use it to control what blocks appear within it - per block - so if I change it later I'll have to hunt down all usages and change the visibility settings.
+
+ So this works pretty well. Because I created it as a Basic Page, there's a bit of text at the top that could be useful for some intro to the listing - or it could be a pain in the arse. What we really need is a way of replicating the filtering that we have in the Drupal version. The Civi events listing is a table, which you can sort on headers. If the table included Event Category or whatever then that would be a sort of filter, but not really what we want. I guess there may be options you can set for this...
+
+[aside: this directly civi generated page has come with a printer-friendly link - who the fuck wants that?]
+
+**Experiment 2** - use the Civi events block to create a view?? No, that's not how it works - you create a block, or page, *from* a view. A Drupal view remember is a database query - I guess the question is can that query be of the civi database? Yes - https://docs.civicrm.org/sysadmin/en/latest/integration/drupal/views/ "CiviCRM integrates with Drupal Views and allows CiviCRM data to be shown on your website". so I think this means we start by creating a drupal view, not by using the Civi events block...
+
+Yep. Following the instructions in the above link I have achieved Civi/Drupal integration and can now create a View that pulls data from Civi.
+
+
+
+
+
+
+
 ## Theme confusion
 
 This could - probably should - go in the Drupal file, anyway...
