@@ -52,7 +52,12 @@ Yep. Following the instructions in the above link I have achieved Civi/Drupal in
 
 
 
+## A note about managing database changes
 
+currently have to manually export databases to into the repo but this is no good really - either:
+
+1. change database location so they are included in repo
+2. use a virtual machine
 
 
 
