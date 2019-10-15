@@ -64,7 +64,41 @@ This is all going pretty well.
 
 Snagging:
 
-- conditional display of address elements i.e. so that if some are not present we don't have unwanted spaces/commas. There are modules for this but none seem particularly well used, so try this: https://www.drupal.org/docs/7/howtos/build-a-simple-conditional-field-in-views-7x-3x
+- conditional display of address elements i.e. so that if some are not present we don't have unwanted spaces/commas. There are modules for this but none seem particularly well used, so try this: https://www.drupal.org/docs/7/howtos/build-a-simple-conditional-field-in-views-7x-3x - done
+- make individual event page usable and consistent with external site, with link to registration form
+  - the link created automatically is http://localhost/drupal7/civicrm/event/info%3Fid%3D1%26reset%3D1 which goes to a CiviCRM styled page, but the proper url (Drupal/Bartik styled) is http://localhost/drupal7/civicrm/event/info?id=1&reset=1, which is weird because they are the same just with html entities in the first one [NB I've configured the left hand menu blocks that were appearing in civi pages to display only on 'civicrm', i.e. have removed 'civicrm/*' which is what appears by default in civicrm blocks]. I fixed this by creating a rewrite rule on the event title and inserting the event id.
+  - fix other issues with this page - get rid of the Voscur Training Category accordion, improve the appearance of the Register Now link/button, deal with the other mess at the bottom of the page
+  - make it so that a logged in external user has a different view from admin i.e. doesn't see drupal/civi menus. This is a whole can of worms - see below re users & registration
+  - make it so that a not logged in user has a different view as above - this should be somewhat less of a can of worms, and hence to do first
+- training level
+- display of time, from/to
+- add an image https://forum.civicrm.org/index.php%3Ftopic=34667.0.html
+
+
+
+### Anonymous user view of event
+
+Currently I'm using this url to show an individual event http://localhost/drupal7/civicrm/event/info?id=1&reset=1, and I'm linking to that by re-writing the link on the event title in the event listing. But this is a civi url and (hence) I think I'm limited (?) in what I can do with it e.g. getting rid of the Voscur Training Category drop down, changing the Register Now link.
+
+So I need to create a view like events-from-civi for individual events., right?
+
+http://www.jackrabbithanna.com/articles/drupalcivicrm-integration - this is pretty unhelpful actually
+
+Contextual Filters is the thing. I've made the civi events listing view construct a link from event titles to civi-event/[title] then created a single event view that has a 'contextual filter' that gets the event title from the url and finds an event based on that.
+
+## User roles & registration
+
+
+
+
+
+
+
+
+
+## Reports as dashlets
+
+
 
 
 
