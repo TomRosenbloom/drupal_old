@@ -102,6 +102,43 @@ Contextual Filters is the thing. I've made the civi events listing view construc
 
 
 
+## Activities and cases
+
+How is this implemented in Voscur (compared with default)?
+
+In default, the Activities are sorted by id, within category i.e. the categories are Contact, civiEvent, CiviContribute, CiviMember, CiviCase and CiviCampaign and the activities are in order of id within each of these categories. There are a lot of activities in the CiviCase category. The first few are Open Case, follow Up, Change Case Type, Change Case Status, Change Case Start Date etc. 
+
+NB there are only two Case Types, Housing Support and Adult Day Care Referral...
+
+Interesting that there's no Close Case - because that is a Case *Status*. The first so many CiviCase Activities cannot be deleted or disabled - they are generic/core activities. There's a few at the end that are specific to medical/housing issues that can be deleted or disabled - I'm guessing there must be some example data built into Civi and that's why we have these activity types (and the case types above).
+
+In Voscur it's all a bit of a mess. Lot's of activity types with 'x' prepended (the ones in the list above that can be deleted/disabled cannot be in Voscur - presumably some permissions issue).
+
+There aren't many Case Types...
+
+So let's look through some recent cases in the case dashboard...
+
+The dashboard is a grid of Status against Case Type. For example, there are 174 Ongoing Enquiries, 676 Completed Enquiries, 163 Completed One Off Support, 23 Ongoing Boost Placement etc. etc. NB the last two statuses are 'Do not use (closed)' and 'do not use resolved'. What's that all about?
+
+When you click through these figures and examine them in more depth, it's clear that many are just historical. I need to create a report of cases that shows when they were last updated etc. so I can get a handle on this data. You don't see that by default but you can see who the case manager is and whether that's a current member of staff, and sometimes a 'next scheduled' activity which may be years ago.
+
+Case Reports in Voscur - these seem to be all historical junk. V old cases, and v short reports - so presumably using a status or relationship that isn't being used any more etc. This is true of Civi reports generally. We could probably delete *all* of them and start again.
+
+Snapshot of cases matrix 16th October 2019:
+
+|                        | For Review                                              | Ongoing                                                      | Urgent | Completed                                                   | Closed (incomplete          | DO NOT USE (Closed                             | DO NOT USE Resolved |
+| ---------------------- | ------------------------------------------------------- | ------------------------------------------------------------ | ------ | ----------------------------------------------------------- | --------------------------- | ---------------------------------------------- | ------------------- |
+| **Support Service**    | 4 - most recent is Dec 2018, all belong to Meera Pandya | 21 most recent June 2018, all belonging to people no longer working here | 0      | 87 - most recent Oct 2018, mostly belonging to ex-employees | 0                           | 61 - very old data, dates range from 2012-2015 | 2 - v old           |
+| **Enquiry**            | 2 - **in active use**                                   | 175 - **in active use**                                      | 0      | 676 - **in active use** but lots of very old data           | 13 - most recent april 2018 | 16 - old data                                  | 1- v old            |
+| **One Off Support**    | 0                                                       | 42 - no dates but all belong to ex-employees                 | 0      | 163 - no dates on any of these but all ex-employees         | 0                           | 12 - all ex-staff                              | 1- v old            |
+| **Employment Service** | 0                                                       | 9 - v old and belonging to ex-employees only                 | 0      | 15 - v old cases                                            | 0                           | 1- 2014                                        | 0                   |
+| **Boost Placement**    | 0                                                       | 23 - all belong to Jessica Langton and are old               | 0      | 5 - no dates, but ex-employees and low id numbers           | 0                           | 1- old                                         | 0                   |
+| **Property**           | 0                                                       | 9 - most recent 2016                                         | 0      | 3 - all from 2015                                           | 0                           | 1- 2015                                        | 0                   |
+
+NB it's quite difficult to assess these because the reports are sorted on organisation name. They can be re-ordered on dates, but many do not have a date (the id would be useful to order on).
+
+Note that some statuses will by definition only have a transient use e.g. Urgent, so the fact there's no cases doesn't necessarily mean it should be got rid of. That could also apply to One Off Support - for this type it might be that we don't want to get rid of Ongoing, but just clear out these 42 old ones.
+
 
 
 ## A note about managing database changes

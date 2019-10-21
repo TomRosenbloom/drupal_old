@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/dataviz</path>
+    <page_callback>CRM_Civisualize_Page_Main</page_callback>
+    <title>Datavisualize</title>
+    <access_arguments>access CiviReport</access_arguments>
+  </item>
+  <item>
+    <path>civicrm/datadoc</path>
+    <page_callback>CRM_Civisualize_Page_Doc</page_callback>
+    <title>Documentation</title>
+    <access_arguments>access CiviReport</access_arguments>
+  </item>
+</menu>
