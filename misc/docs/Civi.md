@@ -1,8 +1,42 @@
 # Civi
 
-tags vs groups (vs custom fields vs membership type)
+## Database import aggro
 
-Relationships - nb contacts can be employees of orgs, not to be confused with inherited membership
+...putting this at the top because it was such a load of aggro...
+
+Doing a phpmyadmin export/import the inmport failed with a foreign key error. I wasted loads of time trying to figure this out, in the end I just removed the offending line from the import script, then ran it separately via phpmyadmin. 
+
+Source of the problem:
+
+```sql
+--
+-- Constraints for table `civicrm_country`
+--
+ALTER TABLE `civicrm_country`
+  ADD CONSTRAINT `FK_civicrm_country_address_format_id` FOREIGN KEY (`address_format_id`) REFERENCES `civicrm_address_format` (`id`),
+  ADD CONSTRAINT `FK_civicrm_country_region_id` FOREIGN KEY (`region_id`) REFERENCES `civicrm_worldregion` (`id`);
+```
+
+Changed to:
+
+```sql
+--
+-- Constraints for table `civicrm_country`
+--
+ALTER TABLE `civicrm_country`
+  ADD CONSTRAINT `FK_civicrm_country_address_format_id` FOREIGN KEY (`address_format_id`) REFERENCES `civicrm_address_format` (`id`);
+```
+
+Then separately ran:
+
+```sql
+ALTER TABLE `civicrm_country`
+  ADD CONSTRAINT `FK_civicrm_country_address_format_id` FOREIGN KEY (`address_format_id`) REFERENCES `civicrm_address_format` (`id`);
+```
+
+
+
+
 
 ## Events
 
@@ -138,6 +172,22 @@ Snapshot of cases matrix 16th October 2019:
 NB it's quite difficult to assess these because the reports are sorted on organisation name. They can be re-ordered on dates, but many do not have a date (the id would be useful to order on).
 
 Note that some statuses will by definition only have a transient use e.g. Urgent, so the fact there's no cases doesn't necessarily mean it should be got rid of. That could also apply to One Off Support - for this type it might be that we don't want to get rid of Ongoing, but just clear out these 42 old ones.
+
+In fact nobody uses this - cases are created using a Drupal form,  https://www.voscur.org/record-enquiry-support-multi and managed using these other forms:  https://www.voscur.org/new-enquiry-cases-snapshot,  https://www.voscur.org/managed-enquiry-cases (not sure how much the last one is known about/used).
+
+Looking at these forms gives a much clearer views of what statuses and activity types are in use. In fact **these forms are the key to understanding how Voscur manages Cases and Activities**. I should try and replicate them. [what they have done is hide the chaos in Civi by creating these forms, but note that there are points where the user is sent back into Civi so it's all a bit confused]. 
+
+There is a training document on the shared drive 'Support inquiries and cases v.9.pdf' which details how these forms are used. It is *very* detailed, to the point of unreadability. This sort of documentation shouldn't be needed (replace with use of tooltips etc).
+
+### Replicating support enquiry forms
+
+Case statuses: For Review; Ongoing; Urgent; Completed; Closed (incomplete)
+
+Type of enquiry: Funding; Signpost; Advice; Resource; Make Connectin; Specialist Support; Collaboration; Startup; Change; Crisis; Youth Sector Support Fund; 2020
+
+When I am logged in to Drupal and view the above forms, I might see the Drupal tabs - I assume dev workers don't see these? How do I 'impersonate' another type of user?
+
+
 
 
 

@@ -13442,8 +13442,8 @@ ALTER TABLE `civicrm_contribution_widget`
 -- Constraints for table `civicrm_country`
 --
 ALTER TABLE `civicrm_country`
-  ADD CONSTRAINT `FK_civicrm_country_address_format_id` FOREIGN KEY (`address_format_id`) REFERENCES `civicrm_address_format` (`id`),
-  ADD CONSTRAINT `FK_civicrm_country_region_id` FOREIGN KEY (`region_id`) REFERENCES `civicrm_worldregion` (`id`);
+  ADD CONSTRAINT `FK_civicrm_country_address_format_id` FOREIGN KEY (`address_format_id`) REFERENCES `civicrm_address_format` (`id`);
+
 
 --
 -- Constraints for table `civicrm_county`

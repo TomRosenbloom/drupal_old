@@ -1,11 +1,19 @@
 # Drupal
 
-## A plan...
+## Cases, a plan...
+
+Use  https://www.drupal.org/project/themekey  to switch theme according to user type (or by url) so pages for internal use have a distinct look (and can hide some of the garbage).
+
+Replicate these pages:  https://www.voscur.org/record-enquiry-support-multi   https://www.voscur.org/new-enquiry-cases-snapshot  (and others?) and make them use a specific theme.
+
+## Events, a plan...
 
 1. In my local installation, replicate the Voscur Calendar view and Upcoming Events block (is it a block?) and install the Bootstrap Business theme
 3. get Civi components running on local installation - nb in the Voscur installation there are (1) components installed and integrated with Drupal (right? CiviCase would be an example I think, because there is a Drupal form for internal staff use - which has been the source of problems though but) (2) components installed and *not* integrated with Drupal (CiviEvent, CiviMember, and more) (3) components not installed (actually, no - none that we will need in the foreseeable)
 3. find out about Voscur SSL certificate - what type (EV presumably), from who, how much...
 4. [investigate using Civi with Worpress]
+
+------
 
 
 
@@ -160,7 +168,15 @@ The simple task of displaying an icon for level is ludicrously difficult. Follow
 
 Someone else had the same idea (using CSS): https://www.drupal.org/forum/support/theme-development/2018-08-24/display-images-for-taxonomy-terms-in-term-reference-field. Note they say to 'use a custom block', not to edit CSS directly...
 
+### Exporting/importing views
 
+Prior to getting rid of old views that are cluttering up the place, they can be exported, but how do you import them? Turns out this depends on having a particular permission enabled - 'Use PHP for settings' - BUT before you can even see that permission you have to enable the 'PHP filter' core module. Once all this is done you will see an 'Import' link in the Views home page.
+
+Views exported from Voscur site can be found in this folder: V:\Business Infrastructure\Data\Internal\CRM and CMS\Data cleaning\views exported from Drupal. Some views could not be exported, example user_location_table (which was disabled). These are reserved? Yes - if I look at my local installation, there are nine or so disabled views at the end of the list that I didn't create hence they are there out of the box. Note also, these ones are shown as 'In code' rather than 'In database'. [initially, I started with two folders 'disabled/enabled' for views in said states before export/deletion. Having done a few, I'm changing my policy and just disabling enabled ones and then leaving them like that for a while - just to be sure. If I delete something that's in use it'll never be forgotten]
+
+Here's a stupid thing: when you import a view you have to give it a name. Say you choose 'imported_view', then import a view - let's say the name of the exported view was 'email bulletin' - the newly imported view will appear in the list of views as 'email_bulletin' - even if there is already a view of that same name. If you then try a second import, you will not be allowed to use 'imported_view' because a view of that name already exists. So this is the 'machine name' (not the enforced use of underscore), but the name shown in the list is the human readable name which comes from the view schema (or whatever it should be called). The machine name is not shown anywhere. Fucking stupid I call it. Note when you get two identical looking views in the list, it is the top one that is the most recently added one.
+
+See below re sitemap creation module.
 
 ## Libraries
 
@@ -194,6 +210,70 @@ Added content type Organisation - plan is to make a mock up of Voscur VCSE Direc
 
 This becomes visible (in addition to VIEW and EDIT) when you add some 'Revision information'. In the Cookbook they show a Log tab, but I can't make that appear...
 
+
+
+## Webforms
+
+To create a webform first you must install the webforms module. Then you get webform as a content type. It's pretty obvious how you create a web form (for e.g. I created a Contact Form following an online tutorial - nb this is contact as in contact us, not a civi contact). You just add fields and specify their properties. Then the form will be available via a url like  http://localhost/drupal7/content/contact-form (in Voscur Drupal the /content/ component has been removed in URL path settings). There is a table in the database that receives all content from all form submissions.
+
+NB there is this ongoing problem with emailing - I need to get this implemented in xampp if I can...
+
+
+
+## Roles and permissions
+
+People->Permissions (tab) (and there is a link from here to permissions page which has the grid view of permissions x roles)
+
+What comes out of the box is pretty rational - in addition to admin there are preset/reserved roles for anonymous user/authenticated user, and these have preset permissions that seem to be what you would want, e.g. for authenticated user event registration is allowed.
+
+So, I currently have a bunch of people in Civi (me, general admin, one or two that I created directly and a load that I imported into Civi from test data created online via  https://www.onlinedatagenerator.com/) [aside: there is a 'Devel' module in Drupal that will create dummy user data, but don't get confused - these contacts were imported into Civi, not Drupal]
+
+To make these into Drupal 'people' I need to (1) pretend to be them registering via the web site (2) create them directly as admin.
+
+[Click on Create new account, and that takes you to the registration form (which has some ugly ass Drupal tabs which it would be nice to get rid of). Differences between the Voscur form and out-of-the-box are: (1) Voscur form has Organisation Name (2) doesn't have address details (just post code) (3) has phone no. (4) has a captcha. NB both have Username and Emal address - this is a minimum requirement I think (Voscur also has the ugly tabs - and the usability is even worse here because there is only a 'log in' so to register you have to click that and then spot that there is a Create new account tab)]
+
+Clear enough how a new user self registers in Drupal, and how you as admin can add a new user, but how does the connection with Civi work?
+
+What roles? Ultimately I want to use ThemeKey to change the theme between (1) authenticated user (2) Voscur person (3) admin [and anonymous user? I don't think so - just need to make it so the external user roles don't see menus and tabs that they shouldn't].
+
+So I created a role Voscur staff, and for now just granted permissions to access Civi cases, add Civi cases and view Civi reports.
+
+
+
+
+
+### Getting rid of tabs
+
+That is, I really want to get rid of the tab navigation for Create new account/Log in/Request new password, because it is a usability disaster. (And similarly if you log in from the login tab of this page - as opposed to using the login form at top of page - you get a real horror of a tabbed 'profile' page kind of thing (tabbed for admin only probably). Lots of other people have had the same thought but it's seemingly not an easy fix. It seems like it might need some coding - something related form_alter_hook stuff. Lots of examples of people recommending variations on this idea  
+
+https://www.drupal.org/forum/support/module-development-and-code-questions/2009-03-17/user-register-login-and-forgot 
+
+ https://eureka.ykyuen.info/2011/01/31/drupal-remove-the-tabs-in-user-registration-form/ 
+
+The idea seems to be that you have to create a module and then use 'hooks' to add custom functionality  https://www.drupal.org/docs/7/creating-custom-modules 
+
+Also:
+
+ https://www.drupal.org/project/tabtamer 
+
+and (sort of relevant)  https://www.drupal.org/project/profile2 &  https://www.drupal.org/project/profile 
+
+also the simple registration form modules or whatever it was called - couldn't get this to work properly (CSS issues - designed for drupal 8?) but could be worth looking at the code
+
+I cannot believe how difficult ti is to customise the login behaviour - just to change the fields that appear in the login form. It's fucking ridiculous.
+
+This has been (so far) a total fucking waste of time. It would help if I could see how it's done in the voscur site...
+
+
+
+## Sending emails from XAMPP
+
+How? 
+
+
+
+
+
 ## Themes
 
 ### Adding a region
@@ -220,7 +300,13 @@ Adds a checkbox for automatically generateing a friendly url (instead of /node/1
 
 Tweaks for admin interface, including the ability to collapse the modules list. NB this is what makes the menu text small, and creates not particularly helpful drop down admin menus.
 
+### XML sitemap
 
+ https://www.drupal.org/documentation/modules/xmlsitemap 
+
+...been tinkering with this as a way to identify views and other content) that should not be deleted. There are plenty of online site map generators, but they tend to be limited to some number of pages, or require sign up for free use. It's not clear to me if they all count pages in the same way - web-site-map.com is still running as I write with circa 3,000 pages processed, but others stop at 500 or 300. The problems is they count every event, news item etc. as a distinct page. The Drupal module is better in that it runs on your own server. Seemingly none of them show any form of hierarchy i.e. anything about site structure - that's a bit weird...  https://webmasters.stackexchange.com/questions/33455/sitemap-hierarchical-layout-possible That is simply the nature of an XML site map - not to be confused with a human-readable site map. XML site maps are 'flat', having info about url, last  modified, change frequency, priority - and that's about it.
+
+So, the useful(?) outcome of this is I can install this Drupal module on the Voscur site and create a site map to see what I shouldn't delete ...but I am slightly sceptical of how this will go i.e. how long it will take and how huge it might end up being (the onlinie one mentioned above s now over 4,200 pages and still going...)
 
 ## Voscur-specific
 
