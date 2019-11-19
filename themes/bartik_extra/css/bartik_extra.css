@@ -9,6 +9,13 @@ and open the template in the editor.
 */
 
 
+/* restrict size of contact form inputs when in sidebar */
+.region-sidebar-first .webform-client-form-21 input[type="text"],
+.region-sidebar-first .webform-client-form-21 input[type="email"] {
+	width: 158px;
+}
+
+
 /* 
 created newregion to house the main navigation because...? 
 I had to do this to make a home for the Nice Menu that replaces the default main menu 

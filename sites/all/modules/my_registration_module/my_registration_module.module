@@ -1,0 +1,8 @@
+<?php
+
+function my_registration_module_form_alter(&$form, &$form_state, $form_id) {
+	if($form_id == 'user_login' || $form_id == 'user_register_form') {
+		echo 'drupal is weird'; // this appears at top of page, and also the rendering of the registration form is stopped below first field 'First Name'
+	}
+}
+
