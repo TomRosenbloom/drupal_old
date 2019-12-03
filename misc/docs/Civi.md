@@ -126,7 +126,17 @@ Contextual Filters is the thing. I've made the civi events listing view construc
 
 
 
+## General settings
 
+### Language
+
+Had a right load of confusion trying to sort out UI language - in particular consistent spelling of 'Organisation' i.e. UK spelling with s instead of z. 
+
+To have the option of specifying an interface language in Civi you have to download the l10n language files and put them in your civi code base.
+
+There is an option to 'inherit language from CMS' but this just seems to create problems and confusion - I couldn't change the language in Drupal in any case.
+
+Once UK English was selected as the language, I still found 'organization' in page titles and headers. The answer is that this is stored locally in the database as *the name of the contact type*!! You have to find your way to the page for editing this contact type  civicrm/admin/options/subtype?action=update&id=3&reset=1. I got this from a forum answer - evidently organisation is a built in contact type with id=3. I haven't yet managed to discover how you navigate to this page in the UI. This is Contact Types:  http://localhost/drupal7/en-gb/civicrm/admin/options/subtype?reset=1&action=browse and this is Option Groups  http://localhost/drupal7/en-gb/civicrm/admin/options?reset=1 but there doesn't seem to be a link from the second to the first...
 
 
 
