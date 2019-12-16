@@ -1,5 +1,6 @@
 {
     "require": {
-        "drush/drush": "7.*"
+        "drush/drush": "7.*",
+        "michaelmcandrew/pop": "^1.0"
     }
 }

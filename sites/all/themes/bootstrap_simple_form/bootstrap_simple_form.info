@@ -1,0 +1,6 @@
+name = Bootstrap simple form
+base theme=bootstrap
+description = sub-theme of Bootstrap, to use in minimalist forms
+core = 7.x
+
+features[] = logo

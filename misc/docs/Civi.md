@@ -189,6 +189,43 @@ Looking at these forms gives a much clearer views of what statuses and activity 
 
 There is a training document on the shared drive 'Support inquiries and cases v.9.pdf' which details how these forms are used. It is *very* detailed, to the point of unreadability. This sort of documentation shouldn't be needed (replace with use of tooltips etc).
 
+Anyway, this is what it boils down to for Voscur:
+
+- there are only really these case statuses in use:
+  - for review - between recording of enquiry and being taken on as a case proper. This is definitely in active use, probably because the Drupal record enquiry form opens the case with this status
+  - ongoing
+  - completed
+  - urgent - *possibly* in use, need to delve further into recent case data to be sure
+- there is only one case type
+  - enquiry
+
+
+
+### Some real data to follow
+
+These are the For Review cases as of Thursday pm 28th Nov. I'll check back on these next week and see where they go.
+
+[seems ridiculous, but adding this as a screen shot was the most effective way of getting this data into this doc!!]
+
+![image-20191128173441243](C:\Users\Tom\AppData\Roaming\Typora\typora-user-images\image-20191128173441243.png)
+
+So next day the first one of these has become 'ongoing' and been assigned to Esther. 
+
+Looking at the full list of ongoing cases, there are a lot where 'most recent' and 'next sched.' (activity) is not set. I don't know how next sched. comes to be set, but how do we get ones with no dated activities? Can this still happen? I seems like the record enquiry form is inserting the date automatically - but remember Clare wanted the ability to add date manually...
+
+Should there be other case types? This might help with reporting, or it might just be a nuisance.
+
+Should there be other case statuses?
+
+Then you are supposed to assign Activity Types and a 'Standard Timeline'. So, to summarise, there are four main things we need to set:
+
+- Case types
+- Case statuses
+- Activity Types (can be per Case Type, right?)
+- timeline
+
+
+
 ### Replicating support enquiry forms
 
 Case statuses: For Review; Ongoing; Urgent; Completed; Closed (incomplete)

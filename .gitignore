@@ -7,3 +7,10 @@ sites/*/private
 
 # netbeans
 nbproject
+
+# composer
+composer.phar
+/vendor/
+
+# temporary folder for shoreditch repo download
+misc/shoreditch_temp_from_repo
