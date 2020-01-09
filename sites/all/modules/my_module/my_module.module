@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * 
+ * My module
+ * 
+ */
+
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path 
+ *   Which path of the site we're using to display help
+ * @param arg 
+ *   Array that holds the current path as returned from arg() function
+ */
+function my_module_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#my_module":
+      return t("Description of what My Module does"); 
+      break; 
+  }    
+}
