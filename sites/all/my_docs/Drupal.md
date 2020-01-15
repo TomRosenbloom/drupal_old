@@ -188,6 +188,12 @@ NB before you install the library, going to Configuration->content Authoring->Wy
 
 You can enable the insert image button but out of the box it only works partially - you can see the image in the editor but it doesn't appear in the page. You need to add more modules to enable an image to be uploaded to the server - one that enables file uploads and one that makes that available to the HTML editor. And then do a bunch of config. And the end result (following instructions in Cookbook) is horrendously clunky (but is the browser's file browser at the end). And is the same on the Voscur site - but interestingly in the navigation you get root>editors and root>images. Editors is selected first by default. There's images in both folders. I really want to know what Polly for e.g. knows about this and whether she uses it... (and everything else herein for that matter - theme regions, blocks, html editor full v filtered html etc etc etc)
 
+### Where do the images go/come from
+
+When adding an event in the Voscur site, or a job ad, you can upload an accompanying feature image. You could also upload an image into the text using the clunky tool described above, but this doesn't happen - that is only used for simple web pages. According to how an image is uploaded, it will end up in a different place on the server. 'Feature' images go into the big 'files' folder, but images added via html editor go in to files/editors/. When you add a file via an editor you can see ones that have been added previously (though usually no thumbnail). When you upload a feature image, you can't pick it from a list so that's why the files folder is full of duplicate images i.e. some_logo_0.jpg, some_logo_1.jpg and so on. I suppose there is an upside to this, which is it means I'm ok deleting old content - there is no chance that an old image is being used by a newer piece of content.That's a pretty significant upside actually...
+
+
+
 ## Content Editing
 
 ### Friendly urls
